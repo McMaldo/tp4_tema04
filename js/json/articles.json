@@ -1,0 +1,65 @@
+[
+    {
+        "id":"0",
+        "name":"Women Blue Denim",
+        "price":{"now":"30.00","then":"36.00"},
+        "img":{"src":"img/img-00.jpg","alt":""},
+        "sizes":["s","m","l","xl","xxl"],
+        "color":[],
+        "sales":""
+    },
+    {
+        "id":"1",
+        "name":"Hoodie Capo",
+        "price":{"now":"35.99","then":"39.99"},
+        "img":{"src":"img/img-01.jpg","alt":""},
+        "sizes":["s","m","l","xl","xxl"],
+        "color":[],
+        "sales":""
+    },
+    {
+        "id":"2",
+        "name":"Aesth Pants",
+        "price":{"now":"19.99","then":"25.99"},
+        "img":{"src":"img/img-02.jpg","alt":""},
+        "sizes":["s","m","l","xl","xxl"],
+        "color":[],
+        "sales":""
+    },
+    {
+        "id":"3",
+        "name":"Aesth Pants",
+        "price":{"now":"18.99","then":"24.99"},
+        "img":{"src":"img/img-03.jpg","alt":""},
+        "sizes":["s","m","l","xl","xxl"],
+        "color":[],
+        "sales":""
+    },
+    {
+        "id":"4",
+        "name":"Aesth Soul Set",
+        "price":{"now":"20.00","then":"22.99"},
+        "img":{"src":"img/img-04.jpg","alt":""},
+        "sizes":["s","m","l","xl","xxl"],
+        "color":[],
+        "sales":""
+    },
+    {
+        "id":"5",
+        "name":"Aesth Kat Set",
+        "price":{"now":"21.99","then":"22.99"},
+        "img":{"src":"img/img-05.jpg","alt":""},
+        "sizes":["s","m","l","xl","xxl"],
+        "color":[],
+        "sales":""
+    },
+    {
+        "id":"6",
+        "name":"Aesth Bat Set",
+        "price":{"now":"19.99","then":"22.99"},
+        "img":{"src":"img/img-06.jpg","alt":""},
+        "sizes":["s","m","l","xl","xxl"],
+        "color":[],
+        "sales":""
+    }
+]
