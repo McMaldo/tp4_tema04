@@ -21,6 +21,9 @@ body{
   width: 100%;
   height: 100vh;
   background-color: var(--bg-general);
+  .icon{
+    user-select: none;
+  }
   header{
     width: 100%;
     height: 45%;
@@ -401,6 +404,17 @@ body.article{
     }
     input[type=submit]:hover{
       scale: 102%;
+    }
+  }
+}
+body.cart{
+  header{
+    height: 2rem;
+    flex-direction: row;
+    justify-content: start;
+    gap: 1rem;
+    .icon{
+      font-size: 1.625em;
     }
   }
 }
