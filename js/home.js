@@ -26,7 +26,7 @@ function setHomeView(){
     <section id="Trending" class="article-list">
       <div class="title">
         <h4>Trending</h4>
-        <h6>Show all</h6>
+        <h6 onClick='showAll()'>Show all</h6>
       </div>
       <div class="article-scroll"></div>
     </section>
@@ -114,4 +114,7 @@ function setArticleList(){
     </article>`
     });
   })
+}
+let showAll=()=>{
+  document.querySelector(".article-scroll").classList.toggle(".showAll")
 }

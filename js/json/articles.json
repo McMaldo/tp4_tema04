@@ -10,7 +10,7 @@
     },
     {
         "id":"1",
-        "name":"Hoodie Capo",
+        "name":"Eywa Hoodie",
         "price":{"now":"35.99","then":"39.99"},
         "img":{"src":"img/img-01.jpg","alt":""},
         "sizes":["s","m","l","xl","xxl"],
@@ -19,7 +19,7 @@
     },
     {
         "id":"2",
-        "name":"Aesth Pants",
+        "name":"Aesth Heart Set",
         "price":{"now":"19.99","then":"25.99"},
         "img":{"src":"img/img-02.jpg","alt":""},
         "sizes":["s","m","l","xl","xxl"],
@@ -55,7 +55,7 @@
     },
     {
         "id":"6",
-        "name":"Aesth Bat Set",
+        "name":"Aesth Pants",
         "price":{"now":"19.99","then":"22.99"},
         "img":{"src":"img/img-06.jpg","alt":""},
         "sizes":["s","m","l","xl","xxl"],

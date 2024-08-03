@@ -14,14 +14,27 @@ let setFooter=()=>{
     </div>
   </footer>`
 }
-let setView=(viewName,id)=>{
+let selectBody=(view)=>{
+  switch(view){
+    case"article":
+      return setArticleView()
+    case"cart":
+      return setCartView()
+    default:
+      return setHomeView()
+  }
+}
+let setView=(view,id)=>{
+  document.body.className=''
+  document.body.classList.add(view)
   document.body.innerHTML=/*html*/`
-  ${viewName=="article"?setArticleView():setHomeView()}
+  ${selectBody(view)}
   ${setFooter()}
+  <script src="js/cart.js"></script>
   <script src="js/article.js"></script>
   <script src="js/home.js"></script>
   <script src="js/index.js"></script>`
-  switch(viewName){
+  switch(view){
     case"article":
       setArticleData(id)
       break;
