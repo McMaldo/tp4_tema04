@@ -8,13 +8,13 @@ function setArticleView(){
     <div class="img-container">
       <img src="img/img-00.jpg" alt="">
     </div>
-    <div class="slider">
-      <span></span>
-      <span class="selected"></span>
-      <span></span>
-    </div>
   </header>
   <main>
+    <nav>
+      <a></a>
+      <a class="selected"></a>
+      <a></a>
+    </nav>
     <div class="product-info">
       <h2></h2>
       <div class="price">
@@ -39,7 +39,7 @@ function setArticleView(){
         <span id="5">XXL</span>
       </div>
     </section>
-    <input type="submit" value="Add to cart">
+    <button id="end">Add to cart</button>
     <section>
       <h5>Comments</h5>
     </section>

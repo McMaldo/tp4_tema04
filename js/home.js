@@ -5,24 +5,36 @@ function setHomeView(){
       <input class="icon" type="submit" value="search">
       <input type="search" placeholder="What are you looking for?">
     </div>
-    <div class="product-info">
-      <h5>Recommendations</h5>
-      <h2>Women Blue Denim</h2>
-      <div class="price">
-        <h3>$30.00</h3>
-        <h5>$36.00</h5>
+    <scroll-page id="page-1">
+      <div class="product-info">
+        <h5>Recommendations</h5>
+        <h2>Women Blue Denim</h2>
+        <div class="price">
+          <h3>$30.00</h3>
+          <h5>$36.00</h5>
+        </div>
       </div>
-    </div>
-    <div class="img-container">
-      <img src="img/img-00.jpg" alt="">
-    </div>
-    <div class="slider">
-      <span></span>
-      <span class="selected"></span>
-      <span></span>
-    </div>
+      <div class="img-container">
+        <img src="img/img-00.jpg" alt="">
+      </div>
+    </scroll-page>
+    <scroll-page id="page-2">
+      <div class="img-container">
+        <img src="img/img-01.jpg" alt="">
+      </div>
+    </scroll-page>
+    <scroll-page id="page-3">
+      <div class="img-container">
+        <img src="img/img-02.jpg" alt="">
+      </div>
+    </scroll-page>
   </header>
   <main>
+    <nav>
+      <a id="a1" href="#page-1" class="selected"></a>
+      <a id="a2" href="#page-2"></a>
+      <a id="a3" href="#page-3"></a>
+    </nav>
     <section id="Trending" class="article-list">
       <div class="title">
         <h4>Trending</h4>
@@ -113,8 +125,16 @@ function setArticleList(){
         </div>
     </article>`
     });
+    document.querySelectorAll("nav a").forEach(e=>{
+      e.setAttribute("onClick",`setSelectedImage(id)`)
+    });
   })
 }
 let showAll=()=>{
   document.querySelector(".article-scroll").classList.toggle(".showAll")
+}
+let setSelectedImage=(idSelected)=>{
+  document.querySelectorAll("nav a").forEach(e => {
+    e.id == idSelected ? e.classList.add("selected") : e.classList.remove("selected")
+  })
 }

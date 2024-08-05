@@ -21,26 +21,26 @@ body{
   width: 100%;
   height: 100vh;
   background-color: var(--bg-general);
-  .icon{
-    user-select: none;
-  }
   header{
     width: 100%;
     height: 45%;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 2.5rem 1rem 1.5rem 1rem;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
     border-radius: 0 0 2rem 2rem;
+    padding: 2rem 1rem 1.25rem 1rem;
     position: relative;
     .search{
+      position: absolute;
+      top: 2rem;
+      left: 1rem;
       z-index: 1;
-      width: 100%;
+      width: calc(100% - 2rem);
       height: 2.5rem;
-      border-radius: 0.35rem;
-      background-color: rgba(206, 206, 206, 0.2);
       display: flex;
       align-items: center;
+      border-radius: 0.35rem;
+      background-color: rgba(206, 206, 206, 0.2);
       input{
         height: 100%;
         background-color: transparent;
@@ -73,28 +73,32 @@ body{
         pointer-events: all;
       }
     }
-    .product-info{
-      z-index: 1;
-      h5{
-        color: var(--font-soft);
-        font-weight: 300;
-      }
-      h2{
-        color: #fff;
-        padding: 0.4rem 0 0.5rem 0;
-        text-shadow: 0 0 1rem #444;
-      }
-      .price{
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        h3{
-          color: var(--main-font);
-        }
+    scroll-page{
+      display: flex;
+      align-items: end;
+      .product-info{
+        z-index: 1;
         h5{
           color: var(--font-soft);
           font-weight: 300;
-          text-decoration: line-through;
+        }
+        h2{
+          color: #fff;
+          padding: 0.4rem 0 0.5rem 0;
+          text-shadow: 0 0 1rem #444;
+        }
+        .price{
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          h3{
+            color: var(--main-font);
+          }
+          h5{
+            color: var(--font-soft);
+            font-weight: 300;
+            text-decoration: line-through;
+          }
         }
       }
     }
@@ -102,47 +106,46 @@ body{
       z-index: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 0 0 2rem 2rem;
       background: linear-gradient(180deg, rgba(241, 241, 241, 0.068), rgba(0, 0, 0, 0.4));
-      position: absolute;
       object-fit: cover;
+      overflow: hidden;
+      flex: 0 0 100%;
+      position: absolute;
       left: 0;
       top: 0;
       img{
         z-index: -1;
       }
     }
-    .slider{
+  }
+  main{
+    min-height: 45%;
+    padding: 0;
+    color: var(--font-text);
+    nav{
+      z-index: 2;
       width: 100%;
       height: 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: absolute;
-      bottom: -1.5rem;
-      left: 0;
       gap: 0.5rem;
-      span{
+      a{
         width: 0.33rem;
         height: 0.33rem;
         border-radius: 50%;
         background-color: #91c9fc;
       }
-      span.selected{
+      a.selected{
         width: 0.5rem;
         height: 0.5rem;
         background-color: #3b9ef8;
       }
     }
-  }
-  main{
-    min-height: 45%;
-    padding: 1.5rem 0 0 0;
-    color: var(--font-text);
     section{
       padding: 0 0 0.5rem 0;
       .title{
@@ -172,20 +175,21 @@ body{
         width: 100%;
         height: auto;
         display: flex;
-        gap: 0.75rem;
+        gap: .75rem;
         align-items: center;
         overflow-x: scroll;
-        padding: 0.5rem 1rem;
+        padding: .5rem 1rem;
         article{
           width: 9rem;
           height: 10rem;
           display: flex;
           flex: 0 0 8rem;
           align-items: end;
-          box-shadow: 0 0 0.5rem 0.25rem #0000001a;
-          border-radius: 0.75rem;
+          box-shadow: 0 0 .375rem .125rem #0000001a;
+          border-radius: .75rem;
           position: relative;
           overflow: hidden;
+          transition: all 1s ease-in-out;
           .article-info{
             z-index: 3;
             width: 100%;
@@ -227,6 +231,12 @@ body{
               z-index: 1;
               width: 100%;
             }
+          }
+        }
+        article:hover{
+          box-shadow: 0 0 .375rem .125rem #00000041;
+          img{
+            width: 101%;
           }
         }
       }
@@ -296,21 +306,24 @@ body.article{
         font-size: 1.625em;
       }
     }
-    .slider{
-      bottom: .5rem;
-      span{
-        background-color: var(--font-soft);
-      }
-      span.selected{
-        background-color: var(--bg-general);
-      }
-    }
   }
   main{
     display: flex;
     flex-direction: column;
+    position: relative;
     padding: .5rem 1rem;
     gap: 1.5rem;
+    nav{
+      position: absolute;
+      top: -2rem;
+      left: 0;
+      a{
+        background-color: var(--font-soft);
+      }
+      a.selected{
+        background-color: var(--bg-general);
+      }
+    }
     .product-info{
       h5{
         color: var(--font-soft);
@@ -391,30 +404,43 @@ body.article{
         }
       }
     }
-    input[type=submit]{
-      width: 100%;
-      height: 3rem;
-      cursor: pointer;
-      transition: all 0.5s ease-in-out;
-      background: linear-gradient(135deg, #4298ee, #1d67c2);
-      box-shadow: 0 .25rem 1.5rem #1d67c29f;
-      border-radius: .5rem;
-      font-size: 1.125em;
-      color: #fff;
-    }
-    input[type=submit]:hover{
-      scale: 102%;
-    }
   }
 }
 body.cart{
   header{
-    height: 2rem;
+    height: 4rem;
     flex-direction: row;
     justify-content: start;
+    background: linear-gradient(180deg, rgb(255, 255, 255), rgba(255, 255, 255, 0.4));
+    padding-bottom: 0;
+    border-radius: 0;
     gap: 1rem;
     .icon{
       font-size: 1.625em;
     }
   }
+  main{
+    height: calc(100% - 4rem);
+    #cart{
+      display: flex;
+      flex-direction: column;
+      article{
+        background-color: #000;
+      }
+    }
+  }
+}
+button#end{
+  width: 100%;
+  height: 3rem;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  background: linear-gradient(135deg, #4298ee, #1d67c2);
+  box-shadow: 0 .25rem 1.5rem #1d67c29f;
+  border-radius: .5rem;
+  font-size: 1.125em;
+  color: #fff;
+}
+button#end:hover{
+  scale: 102%;
 }
