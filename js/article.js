@@ -5,15 +5,27 @@ function setArticleView(){
       <span class="icon" onclick='setView("home")'>arrow_back</span>
       <span class="icon" onclick='setView("cart")'>shopping_cart</span>
     </div>
-    <div class="img-container">
-      <img src="img/img-00.jpg" alt="">
-    </div>
+    <scroll-page id="page-1">
+      <div class="img-container">
+        <img src="" alt="">
+      </div>
+    </scroll-page>
+    <scroll-page id="page-2">
+      <div class="img-container">
+        <img src="" alt="">
+      </div>
+    </scroll-page>
+    <scroll-page id="page-3">
+      <div class="img-container">
+        <img src="" alt="">
+      </div>
+    </scroll-page>
   </header>
   <main>
     <nav>
-      <a></a>
-      <a class="selected"></a>
-      <a></a>
+      <a id="a1" href="#page-1" class="selected"></a>
+      <a id="a2" href="#page-2"></a>
+      <a id="a3" href="#page-3"></a>
     </nav>
     <div class="product-info">
       <h2></h2>
@@ -51,8 +63,8 @@ let setArticleData=(articleSelected)=>{
   .then(data => {
     data.forEach(e => {
       if(e.id == articleSelected){
-        document.querySelector("header .img-container").innerHTML=/*html*/`
-          <img src="${e.img.src}" alt="${e.img.alt}">`
+        document.querySelectorAll("header .img-container").forEach(x=>
+          x.innerHTML=/*html*/`<img src="${e.img.src}" alt="${e.img.alt}">`)
         document.querySelector("main .product-info").innerHTML=/*html*/`
           <h1>${e.name}</h1>
           <div class="price">
@@ -62,14 +74,14 @@ let setArticleData=(articleSelected)=>{
       }
     })
   })
-  let list=["color","size"].forEach(x=>{
-    document.querySelectorAll(`#${x}-list span`).forEach(e=>{
-      e.setAttribute("onClick",`setSelectedOption("#${x}-list",id)`)
+  let list=["#color-list span","#size-list span","nav a"].forEach(x=>{
+    document.querySelectorAll(`${x}`).forEach(e=>{
+      e.setAttribute("onClick",`setSelectedOption("${x}",id)`)
     })
   })
 }
-let setSelectedOption=(group,idSelected)=>{
-  document.querySelector(group).querySelectorAll("span").forEach(e => {
+let setSelectedOption=(ubic,idSelected)=>{
+  document.querySelectorAll(`${ubic}`).forEach(e => {
     e.id == idSelected ? e.classList.add("selected") : e.classList.remove("selected")
   })
 }
