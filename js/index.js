@@ -14,32 +14,30 @@ let setFooter=()=>{
     </div>
   </footer>`
 }
-let selectBody=(view)=>{
+let setBody=(view)=>{
   switch(view){
     case"article":
-      return setArticleView()
+      return setArticleView()+'<script src="js/article.js"></script>'
     case"cart":
-      return setCartView()
+      return setCartView()+'<script src="js/cart.js"></script>'
     default:
-      return setHomeView()
+      return setHomeView()+'<script src="js/home.js"></script>'
   }
 }
 let setView=(view,id)=>{
-  document.body.className=''
-  document.body.classList.add(view)
+  window.scroll(0,0);
+  document.body.className='';
+  document.body.classList.add(view);
   document.body.innerHTML=/*html*/`
-  ${selectBody(view)}
+  ${setBody(view)}
   ${setFooter()}
-  <script src="js/cart.js"></script>
-  <script src="js/article.js"></script>
-  <script src="js/home.js"></script>
   <script src="js/index.js"></script>`
   switch(view){
     case"article":
       setArticleData(id)
       break;
-    default:
-      setArticleList()
+    case"home":
+      setHomeData()
       break;
   }
 }
