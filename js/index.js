@@ -1,3 +1,8 @@
+async function request() {
+  const response = await fetch("js/json/articles.json");
+  const data = await response.json();
+  return data;
+}
 let setFooter=()=>{
   return /*html*/`
   <footer>
@@ -14,32 +19,27 @@ let setFooter=()=>{
     </div>
   </footer>`
 }
-let setBody=(view)=>{
+let setBody=(view,data,id)=>{
   switch(view){
     case"article":
-      return setArticleView()+'<script src="js/article.js"></script>'
+      return setArticleView(data,id);
     case"cart":
-      return setCartView()+'<script src="js/cart.js"></script>'
+      return setCartView(data);
     default:
-      return setHomeView()+'<script src="js/home.js"></script>'
+      return setHomeView(data);
   }
 }
-let setView=(view,id)=>{
+let setView=async (view,id)=>{
   window.scroll(0,0);
+  let data=await request();
   document.body.className='';
   document.body.classList.add(view);
   document.body.innerHTML=/*html*/`
-  ${setBody(view)}
+  ${setBody(view,data,id)}
   ${setFooter()}
+  <script src="js/article.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/home.js"></script>
   <script src="js/index.js"></script>`
-  switch(view){
-    case"article":
-      setArticleData(id)
-      break;
-    case"home":
-      setHomeData()
-      break;
-  }
 }
-
 setView("home");
