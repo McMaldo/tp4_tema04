@@ -59,19 +59,18 @@ function setArticleScroll(data){
 }
 function setHomeView(data){
   return/*html*/`
-  <header>
-    <div class="search">
-      <input class="icon" type="submit" value="search">
-      <input type="search" placeholder="What are you looking for?">
-    </div>
-    <scroll-container>
-      ${setHeaderScroll(data)}
-    </scroll-container>
-    <nav>
-      ${setNav(data)}
-    </nav>
-  </header>
-  <main>
+    <section id="heading">
+      <div class="search">
+        <input class="icon" type="submit" value="search">
+        <input type="search" placeholder="What are you looking for?">
+      </div>
+      <scroll-container>
+        ${setHeaderScroll(data)}
+      </scroll-container>
+      <nav>
+        ${setNav(data)}
+      </nav>
+    </section>
     <section id="Trending" class="article-list">
       <div class="title">
         <h4>Trending</h4>
@@ -111,6 +110,5 @@ function setHomeView(data){
         <h6>Show all</h6>
       </div>
       <div class="article-scroll"></div>
-    </section>
-  </main>`
+    </section>`
 }

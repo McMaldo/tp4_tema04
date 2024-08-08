@@ -1,7 +1,12 @@
 let color=0;
 let size=0;
-let addToCart=()=>{
-  
+let addToCart=async (articleToAdd)=>{
+  let article={};
+  let data=await request();
+  data.forEach(e => e.id==articleToAdd ? article=e : 0);
+  localStorage.setItem("cart",
+    localStorage.getItem("cart") ? localStorage.getItem("cart").concat(","+JSON.stringify(article)) : JSON.stringify(article)
+  );
 }
 let setSelectedOption=(ubic,idSelected)=>{
   document.querySelectorAll(`${ubic}`).forEach(e => {
@@ -10,13 +15,9 @@ let setSelectedOption=(ubic,idSelected)=>{
 }
 function setArticleView(data,articleSelected){
   let article={};
-  data.forEach(e => {
-    if(e.id == articleSelected){
-      article=e;
-    }
-  });
+  data.forEach(e => e.id==articleSelected ? article=e : 0)
   return /*html*/`
-  <header>
+  <section id="heading">
     <div class="icon-container">
       <span class="icon" onclick='setView("home")'>arrow_back</span>
       <span class="icon" onclick='setView("cart")'>shopping_cart</span>
@@ -33,16 +34,16 @@ function setArticleView(data,articleSelected){
       <a id="a2" href="#page-2" onClick="setSelectedOption('nav a',id)"></a>
       <a id="a3" href="#page-3" onClick="setSelectedOption('nav a',id)"></a>
     </nav>
-  </header>
-  <main>
-    <div class="product-info">
+  </section>
+  <section class="product-info">
+    <div>
       <h1>${article.name}</h1>
       <div class="price">
         <h2>$${article.price.now}</h2>
         <h4>$${article.price.then}</h4>
       </div>
     </div>
-    <section>
+    <div>
       <h5>Colour</h5>
       <div id="color-list">
         <span id="color1" onClick="setSelectedOption('#color-list span',id)" class="selected"><svg></svg></span>
@@ -50,8 +51,8 @@ function setArticleView(data,articleSelected){
         <span id="color3" onClick="setSelectedOption('#color-list span',id)"><svg></svg></span>
         <span id="color4" onClick="setSelectedOption('#color-list span',id)"><svg></svg></span>
       </div>
-    </section>
-    <section>
+    </div>
+    <div>
       <h5>Size</h5>
       <div id="size-list">
         <span id="1" onClick="setSelectedOption('#size-list span',id)">S</span>
@@ -60,10 +61,8 @@ function setArticleView(data,articleSelected){
         <span id="4" onClick="setSelectedOption('#size-list span',id)">XL</span>
         <span id="5" onClick="setSelectedOption('#size-list span',id)">XXL</span>
       </div>
-    </section>
-    <button id="end">Add to cart</button>
-    <section>
-      <h5>Comments</h5>
-    </section>
-  </main>`
+    </div>
+    <button id="end" onClick="addToCart(${article.id})">Add to cart</button>
+    <!--<h5>Comments</h5>-->
+  </section>`
 }

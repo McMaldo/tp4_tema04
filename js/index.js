@@ -3,43 +3,44 @@ async function request() {
   const data = await response.json();
   return data;
 }
-let setFooter=()=>{
-  return /*html*/`
-  <footer>
-    <h3>contact us</h3>
-    <div>
-      <div class="row">
-        <span class="icon">mail</span>
-        <h5>McMaldo</h5>
-      </div>
-      <div class="row">
-        <span class="icon">mail</span>
-        <h5>maldonado.ignacio.pablo@gmail.com</h5>
-      </div>
-    </div>
-  </footer>`
-}
 let setBody=(view,data,id)=>{
   switch(view){
     case"article":
       return setArticleView(data,id);
     case"cart":
-      return setCartView(data);
+      return setCartView();
     default:
       return setHomeView(data);
   }
 }
+/*const route = (event) => {
+  event = event || window.event;
+  event.preventDefault();
+  window.history.pushState({}, "", event.target.href);
+  handleLocation();
+};
+const routes = {
+  404: "/pages/404.html",
+  "/": "/pages/index.html",
+  "/about": "/pages/about.html",
+  "/lorem": "/pages/lorem.html",
+};
+const handleLocation = async () => {
+  const path = window.location.pathname;
+  const route = routes[path] || routes[404];
+  const html = await fetch(route).then((data) => data.text());
+  document.getElementById("main-page").innerHTML = html;
+};
+window.onpopstate = handleLocation;
+window.route = route;
+handleLocation();*/
+
 let setView=async (view,id)=>{
-  window.scroll(0,0);
+  window.scroll(0,40);
   let data=await request();
-  document.body.className='';
-  document.body.classList.add(view);
-  document.body.innerHTML=/*html*/`
-  ${setBody(view,data,id)}
-  ${setFooter()}
-  <script src="js/article.js"></script>
-  <script src="js/cart.js"></script>
-  <script src="js/home.js"></script>
-  <script src="js/index.js"></script>`
+  let main=document.querySelector("main");
+  main.className='';
+  main.classList.add(view);
+  main.innerHTML=setBody(view,data,id)
 }
 setView("home");
