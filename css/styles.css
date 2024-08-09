@@ -240,6 +240,7 @@ main{
         position: relative;
         overflow: hidden;
         transition: all 1s ease-in-out;
+        user-select: none;
         .img-container{
           position: absolute;
           left: 0;
@@ -340,6 +341,7 @@ main.article{
       .icon{
         color: white;
         text-shadow: 0 0 1rem #444;
+        cursor: pointer;
         font-size: 1.625em;
       }
     }
@@ -396,6 +398,7 @@ main.article{
           height: 1.875rem;
           border-radius: 50%;
           padding: 2px;
+          cursor: pointer;
           svg{
             width: 100%;
             height: 100%;
@@ -419,9 +422,10 @@ main.article{
         display: flex;
         justify-content: space-between;
         background-color: #dde4f0;
-        padding: 0 2rem;
         border-radius: 0.125rem;
+        user-select: none;
         color: #a9aebb;
+        padding: 0 2rem;
         span{
           width: 1.5rem;
           height: 100%;
@@ -429,6 +433,7 @@ main.article{
           align-items: center;
           justify-content: center;
           font-size: 0.875em;
+          cursor: pointer;
         }
         .selected{
           scale: 150%;

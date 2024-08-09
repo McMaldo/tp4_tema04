@@ -65,12 +65,13 @@ let articleCount=(type,id)=>{
   setTotal();
 }
 let setTotal=()=>{
-  let total=document.querySelector("#total h3");
-  total.innerText=0;
-  document.querySelectorAll(".article-price h4").forEach(e=>{
-    total.innerText=Number(total.innerText+e.innerText);
+  let total=0;
+  document.querySelectorAll("article").forEach(e=>{
+    let a = Number(e.querySelector(".article-price .price").innerHTML)
+    let b = Number(e.querySelector(".article-price .num").innerHTML)
+    total+= a * b;
   })
-  total.innerText="$"+total.innerText;
+  document.querySelector("#total h3").innerText="$"+total.toFixed(2);
 }
 let checkOut=()=>{
   localStorage.removeItem("cart");
@@ -90,7 +91,7 @@ let setCartContent=()=>{
           <h4>${e.name}</h4>
           <div class="article-options"><h5>${e.color}</h5><h5 class="size">${e.size}</h5></div>
           <div class="article-price">
-            <h4>${e.price.now}</h4>
+            <h4 class="price">${e.price.now}</h4>
             <div class="article-unit">
               <button class="icon restar" onclick='articleCount("-","a${e.id}")'>remove</button>
               <h5 class="num">1</h5>
