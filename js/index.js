@@ -13,6 +13,15 @@ let setBody=(view,data,id)=>{
       return setHomeView(data);
   }
 }
+let setView=async (view,id)=>{
+  window.scroll(0,40);
+  let data=await request();
+  let main=document.querySelector("main");
+  main.className=view;
+  main.innerHTML=setBody(view,data,id)
+}
+setView();
+
 /*const route = (event) => {
   event = event || window.event;
   event.preventDefault();
@@ -29,18 +38,8 @@ const handleLocation = async () => {
   const path = window.location.pathname;
   const route = routes[path] || routes[404];
   const html = await fetch(route).then((data) => data.text());
-  document.getElementById("main-page").innerHTML = html;
+  document.querySelector("main").innerHTML = html;
 };
 window.onpopstate = handleLocation;
 window.route = route;
 handleLocation();*/
-
-let setView=async (view,id)=>{
-  window.scroll(0,40);
-  let data=await request();
-  let main=document.querySelector("main");
-  main.className='';
-  main.classList.add(view);
-  main.innerHTML=setBody(view,data,id)
-}
-setView("home");

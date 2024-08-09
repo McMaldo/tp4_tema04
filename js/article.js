@@ -1,17 +1,25 @@
-let color=0;
-let size=0;
+let color="white";
+let size="l";
 let addToCart=async (articleToAdd)=>{
   let article={};
   let data=await request();
   data.forEach(e => e.id==articleToAdd ? article=e : 0);
+  article.color=color;
+  article.size=size;
   localStorage.setItem("cart",
     localStorage.getItem("cart") ? localStorage.getItem("cart").concat(","+JSON.stringify(article)) : JSON.stringify(article)
   );
+  setView("cart");
 }
 let setSelectedOption=(ubic,idSelected)=>{
   document.querySelectorAll(`${ubic}`).forEach(e => {
     e.id == idSelected ? e.classList.add("selected") : e.classList.remove("selected")
   })
+  if(ubic=="#color-list span"){
+    color=idSelected;
+  }else if(ubic=="#size-list span"){
+    size=idSelected;
+  }
 }
 function setArticleView(data,articleSelected){
   let article={};
@@ -46,20 +54,20 @@ function setArticleView(data,articleSelected){
     <div>
       <h5>Colour</h5>
       <div id="color-list">
-        <span id="color1" onClick="setSelectedOption('#color-list span',id)" class="selected"><svg></svg></span>
-        <span id="color2" onClick="setSelectedOption('#color-list span',id)"><svg></svg></span>
-        <span id="color3" onClick="setSelectedOption('#color-list span',id)"><svg></svg></span>
-        <span id="color4" onClick="setSelectedOption('#color-list span',id)"><svg></svg></span>
+        <span id="white" onClick="setSelectedOption('#color-list span',id)" class="selected"><svg></svg></span>
+        <span id="gray" onClick="setSelectedOption('#color-list span',id)"><svg></svg></span>
+        <span id="black" onClick="setSelectedOption('#color-list span',id)"><svg></svg></span>
+        <span id="blue" onClick="setSelectedOption('#color-list span',id)"><svg></svg></span>
       </div>
     </div>
     <div>
       <h5>Size</h5>
       <div id="size-list">
-        <span id="1" onClick="setSelectedOption('#size-list span',id)">S</span>
-        <span id="2" onClick="setSelectedOption('#size-list span',id)">M</span>
-        <span id="3" onClick="setSelectedOption('#size-list span',id)" class="selected">L</span>
-        <span id="4" onClick="setSelectedOption('#size-list span',id)">XL</span>
-        <span id="5" onClick="setSelectedOption('#size-list span',id)">XXL</span>
+        <span id="s" onClick="setSelectedOption('#size-list span',id)">S</span>
+        <span id="m" onClick="setSelectedOption('#size-list span',id)">M</span>
+        <span id="l" onClick="setSelectedOption('#size-list span',id)" class="selected">L</span>
+        <span id="xl" onClick="setSelectedOption('#size-list span',id)">XL</span>
+        <span id="xxl" onClick="setSelectedOption('#size-list span',id)">XXL</span>
       </div>
     </div>
     <button id="end" onClick="addToCart(${article.id})">Add to cart</button>

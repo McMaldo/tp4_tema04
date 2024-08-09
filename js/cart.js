@@ -58,9 +58,23 @@ function uploadTotal(){
     span.innerText = `total: ${priceUnit * cant}`;
   }
 }*/
-//xd
+
+let articleCount=(type,id)=>{
+  let n=document.querySelector(`#${id} .num`);
+  n.innerText=Number(n.innerText)+(type=="+" ? 1 : (n.innerText>1 ? -1 : 0));
+  setTotal();
+}
+let setTotal=()=>{
+  let total=document.querySelector("#total h3");
+  total.innerText=0;
+  document.querySelectorAll(".article-price h4").forEach(e=>{
+    total.innerText=Number(total.innerText+e.innerText);
+  })
+  total.innerText="$"+total.innerText;
+}
 let checkOut=()=>{
   localStorage.removeItem("cart");
+  setView("cart");
 }
 let setCartContent=()=>{
   let result="";
@@ -68,19 +82,19 @@ let setCartContent=()=>{
     let data=JSON.parse("["+localStorage.getItem("cart")+"]");
     data.forEach(e => {
       result+=/*html*/`
-      <article id="${e.id}">
+      <article id="a${e.id}">
         <div class="img-container" onClick='setView("article",${e.id})'>
           <img src="${e.img.src}" alt="">
         </div>
         <div class="article-info">
           <h4>${e.name}</h4>
-          <h5>Blue . L</h5>
+          <div class="article-options"><h5>${e.color}</h5><h5 class="size">${e.size}</h5></div>
           <div class="article-price">
             <h4>${e.price.now}</h4>
             <div class="article-unit">
-                <button class="icon restar">remove</button>
-                <h5 class="num">1</h5>
-                <button class="icon sumar">add</button>
+              <button class="icon restar" onclick='articleCount("-","a${e.id}")'>remove</button>
+              <h5 class="num">1</h5>
+              <button class="icon sumar" onclick='articleCount("+","a${e.id}")'>add</button>
             </div>
           </div>
         </div>
