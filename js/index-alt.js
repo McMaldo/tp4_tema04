@@ -1,0 +1,1 @@
+console.warn("Your browser does not support ES6\nTry getting a new one, boomer!!");

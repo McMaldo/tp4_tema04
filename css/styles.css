@@ -15,28 +15,35 @@ body{
 }
 header{
   width:100%;
-  height:2.5rem;
+  height:50px;
   padding:0 .5rem;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(#25262b 85%, #25262bf5);
+  background: linear-gradient(var(--bg-general) 70%, #f0f0f0);
   color: var(--font-soft);
   div{
-    gap:2px;
+    height: 100%;
+    align-items: center;
+    gap: .5rem;
     .logo{
       width: 2.5rem;
       height: 100%;
-      background-image: url(../img/icon-w2.png);
+      background-image: url(../img/logo.png);
+      background-repeat: no-repeat;
       background-position: center;
       background-size: contain;
     }
-    h3{
+    h3,.icon{
       font-weight: 300;
+      color: var(--font-text);
     }
-    span{
+    .icon,.logo{
       cursor: pointer;
     }
-    span:hover{
+    .icon{
+      font-size: 2.5em;
+    }
+    .icon:hover{
       text-shadow:0 0 4px 4px #000;
     }
   }

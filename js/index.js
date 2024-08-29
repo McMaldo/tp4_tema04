@@ -1,50 +1,78 @@
-/*const route = (event) => {
-  event = event || window.event;
-  event.preventDefault();
-  window.history.pushState({}, "", event.target.href);
-  handleLocation();
-};
-const routes = {
-  404: "./html/404.html",
-  "/": "./html/home.html",
-  "/cart": "./html/cart.html",
-  "/article": "./html/article.html",
-};
-const handleLocation = async () => {
-  window.scroll(0,40);
-  const path = window.location.pathname;
-  const route = routes[path] || routes[404];
-  const html = await fetch(route).then((data) => data.text());
-  let main=document.querySelector("main");
-  main.innerHTML = html;
-  main.className = path.slice(1);
-  const data=await request();
-  setBody(path,data)
-};
-window.onpopstate = handleLocation;
-window.route = route;
-handleLocation();*/
+import * as article from "./module/article.js";
+import * as cart from "./module/cart.js";
+import * as home from "./module/home.js";
 
 async function request() {
   const response = await fetch("js/json/articles.json");
   const data = await response.json();
   return data;
 }
-let setBody=(view,data,id)=>{
+let setBody = (view, data, id) => {
   switch(view){
     case"article":
-      return setArticleView(data,id);
+      return article.setMain(data, id);
     case"cart":
-      return setCartView();
+      return cart.setMain();
     default:
-      return setHomeView(data);
+      return home.setMain(data);
   }
 }
-let setView=async (view,id)=>{
-  window.scroll(0,40);
-  let data=await request();
-  let main=document.querySelector("main");
-  main.className=view;
-  main.innerHTML=setBody(view,data,id)
+let setEvents = (view, data, id) => {
+  switch(view){
+    case"article":
+      document.querySelector("#goHome").addEventListener("click", () => setView("home"))
+      document.querySelector("#goCart").addEventListener("click", () => setView("cart"))
+      let ubicList = ["nav a","#color-list span","#size-list span"]
+      ubicList.forEach(ubic=>{
+        document.querySelectorAll(ubic).forEach(e => {
+          e.addEventListener("click", () => article.setSelectedOption(ubic,e.id))
+        })
+      })
+      document.querySelector("#end").addEventListener("click", () => {
+        article.addToCart(data,id);
+        setView("cart");
+      });
+      break;
+    case"cart":
+      document.querySelector("#heading .icon").addEventListener("click", () =>  setView("home"));
+      document.querySelectorAll("#cart article").forEach(e => {
+        e.querySelector(".img-container").addEventListener("click", () => setView("article",(e.id).substr(1)));
+        e.querySelector(".restar").addEventListener("click", () => cart.articleCount("-",e.id));
+        e.querySelector(".sumar").addEventListener("click", () => cart.articleCount("+",e.id));
+      })
+      document.querySelector("#end").addEventListener("click", () => {
+        cart.checkOut();
+        setView("cart");
+      });
+      break;
+    default:
+      document.querySelectorAll("scroll-page").forEach(e => {
+        e.addEventListener("click", () => setView("article",e.id))
+      })
+      document.querySelectorAll("article").forEach(e => {
+        e.addEventListener("click", () => setView("article",e.id))
+      })
+      break;
+  }
 }
+let setView = async (view, id) => {
+  window.scroll(0,50);
+  let data = await request();
+  let main = document.querySelector("main");
+  main.className = (view ? view : "");
+  main.innerHTML = setBody(view, data, id);
+  setEvents(view, data, id);
+}
+
 setView();
+
+/*document.addEventListener("click", e => {
+  if(e.target.matches(".search")){
+    if(e.key === "Escape")e.target.value =""
+    document.querySelectorAll("article").forEach(a=>{
+      a.textContent.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase()) ?
+      a.classList.remove("filter") :
+      a.classList.add("filter")
+    })
+  }
+})*/
