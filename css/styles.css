@@ -290,6 +290,7 @@ main{
     .article-scroll.showAll{
       flex-wrap: wrap;
       overflow-x: unset;
+      justify-content: center;
     }
   }
   section.Categories{

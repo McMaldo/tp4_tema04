@@ -49,8 +49,11 @@ let setEvents = (view, data, id) => {
       document.querySelectorAll("scroll-page").forEach(e => {
         e.addEventListener("click", () => setView("article",e.id))
       })
-      document.querySelectorAll("article").forEach(e => {
+      document.querySelectorAll(".article-list article").forEach(e => {
         e.addEventListener("click", () => setView("article",e.id))
+      })
+      document.querySelectorAll(".showAll").forEach(e => {
+        e.addEventListener("click", () => home.showAll())
       })
       break;
   }

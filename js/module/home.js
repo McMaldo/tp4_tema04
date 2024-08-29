@@ -1,5 +1,5 @@
 export let showAll=()=>{
-  document.querySelector(".article-scroll").classList.toggle(".showAll")
+  document.querySelector(".article-scroll").classList.toggle("showAll")
 }
 export let setSelectedImage=(idSelected)=>{
   document.querySelectorAll("nav a").forEach(e => {
@@ -74,7 +74,7 @@ export let setMain=(data)=>{
     <section id="Trending" class="article-list">
       <div class="title">
         <h4>Trending</h4>
-        <h6 onClick='showAll()'>Show all</h6>
+        <h6 class="showAll">Show all</h6>
       </div>
       <div class="article-scroll">
         ${setArticleScroll(data)}
