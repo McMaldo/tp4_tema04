@@ -88,14 +88,14 @@ export let setMain=(data)=>{
       <div class="categories-list">
         <article>
           <div class="img-container">
-            <img src="img/icon-m.png" alt="">
+            <img src="img/i/icon-m.png" alt="">
           </div>
           <div class="name">Woman<h6>(728 items)</h6></div>
           <div class="icon">chevron_right</div>
         </article>
         <article>
           <div class="img-container">
-            <img src="img/icon-w.png" alt="">
+            <img src="img/i/icon-w.png" alt="">
           </div>
           <div class="name">Man<h6>(536 items)</h6></div>
           <div class="icon">chevron_right</div>
