@@ -31,7 +31,7 @@ export function setMain(data,articleSelected){
     <scroll-container>
       <scroll-page id="page-1">
         <div class="img-container">
-          <img src="${article.img.src}" alt="${article.img.alt}">
+          <img src="public/${article.img.src}" alt="${article.img.alt}">
         </div>
       </scroll-page>
     </scroll-container>

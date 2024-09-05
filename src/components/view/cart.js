@@ -26,7 +26,7 @@ let setCartContent=()=>{
       result += /*html*/`
       <article id="a${e.id}">
         <div class="img-container">
-          <img src="${e.img.src}" alt="">
+          <img src="public/${e.img.src}" alt="">
         </div>
         <div class="article-info">
           <h4>${e.name}</h4>

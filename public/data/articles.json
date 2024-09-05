@@ -1,0 +1,128 @@
+[
+    {
+        "id":"0",
+        "name":"Women Blue Denim",
+        "price":{"now":"30.00","then":"36.00"},
+        "img":{"src":"img/a/img-00.jpg","alt":""},
+        "sales":""
+    },
+    {
+        "id":"1",
+        "name":"Eywa Hoodie",
+        "price":{"now":"35.99","then":"39.99"},
+        "img":{"src":"img/a/img-01.jpg","alt":""},
+        "sales":""
+    },
+    {
+        "id":"2",
+        "name":"Aesth Heart Set",
+        "price":{"now":"19.99","then":"25.99"},
+        "img":{"src":"img/a/img-02.jpg","alt":""},
+        "sales":""
+    },
+    {
+        "id":"3",
+        "name":"Aesth Pants",
+        "price":{"now":"18.99","then":"24.99"},
+        "img":{"src":"img/a/img-03.jpg","alt":""},
+        "sales":""
+    },
+    {
+        "id":"4",
+        "name":"Aesth Soul Set",
+        "price":{"now":"20.00","then":"22.99"},
+        "img":{"src":"img/a/img-04.jpg","alt":""},
+        "sales":""
+    },
+    {
+        "id":"5",
+        "name":"Aesth Kat Set",
+        "price":{"now":"21.99","then":"22.99"},
+        "img":{"src":"img/a/img-05.jpg","alt":""},
+        "sales":""
+    },
+    {
+        "id":"6",
+        "name":"Aesth Pants",
+        "price":{"now":"19.99","then":"22.99"},
+        "img":{"src":"img/a/img-06.jpg","alt":""},
+        "sales":""
+    },
+    {
+        "id":"7",
+        "name":"Aesth Pants",
+        "price":{"now":"19.99","then":"22.99"},
+        "img":{"src":"img/a/img-07.webp","alt":""},
+        "sales":""
+    },
+    {
+        "id":"8",
+        "name":"Aesth Pants",
+        "price":{"now":"19.99","then":"22.99"},
+        "img":{"src":"img/a/img-08.webp","alt":""},
+        "sales":""
+    },
+    {
+        "id":"9",
+        "name":"Aesth Hoodie",
+        "price":{"now":"19.99","then":"22.99"},
+        "img":{"src":"img/a/img-09.png","alt":""},
+        "sales":""
+    },
+    {
+        "id":"10",
+        "name":"Nike Jordans",
+        "price":{"now":"19.99","then":"22.99"},
+        "img":{"src":"img/a/img-10.jpg","alt":""},
+        "sales":""
+    },
+    {
+        "id":"11",
+        "name":"Nike Running",
+        "price":{"now":"19.99","then":"22.99"},
+        "img":{"src":"img/a/img-11.jpg","alt":""},
+        "sales":""
+    },
+    {
+        "id":"12",
+        "name":"Nike Crossfit",
+        "price":{"now":"19.99","then":"22.99"},
+        "img":{"src":"img/a/img-12.jpg","alt":""},
+        "sales":""
+    },
+    {
+        "id":"13",
+        "name":"Nike Graffiti",
+        "price":{"now":"19.99","then":"22.99"},
+        "img":{"src":"img/a/img-13.jpg","alt":""},
+        "sales":""
+    },
+    {
+        "id":"14",
+        "name":"Nike Jordans",
+        "price":{"now":"19.99","then":"22.99"},
+        "img":{"src":"img/a/img-14.jpg","alt":""},
+        "sales":""
+    },
+    {
+        "id":"15",
+        "name":"Nike Dunk",
+        "price":{"now":"19.99","then":"22.99"},
+        "img":{"src":"img/a/img-15.jpg","alt":""},
+        "sales":""
+    },
+    {
+        "id":"16",
+        "name":"Nike Dunk Slow",
+        "price":{"now":"19.99","then":"22.99"},
+        "img":{"src":"img/a/img-16.webp","alt":""},
+        "sales":""
+    },
+    {
+        "id":"17",
+        "name":"Nike Dunk",
+        "price":{"now":"19.99","then":"22.99"},
+        "img":{"src":"img/a/img-17.jpg","alt":""},
+        "sales":""
+    }
+]

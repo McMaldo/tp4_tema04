@@ -1,8 +1,8 @@
 export let showAll=()=>{
   document.querySelector(".article-scroll").classList.toggle("showAll")
 }
-export let setSelectedImage=(idSelected)=>{
-  document.querySelectorAll("nav a").forEach(e => {
+export let setSelectedImg=(idSelected)=>{
+  document.querySelectorAll("#heading nav a").forEach(e => {
     e.id == idSelected ? e.classList.add("selected") : e.classList.remove("selected")
   })
 }
@@ -11,16 +11,16 @@ function setHeaderScroll(data){
   data.forEach(e=>{
     if(e.id<3) {
       result+=/*html*/`<scroll-page id="${e.id}">
-        <div class="product-info">
-          <h5>Recommendations</h5>
-          <h2>${e.name}</h2>
-          <div class="price">
-            <h3>$${e.price.now}</h4>
-            <h5>$${e.price.then}</h5>
-          </div>
-        </div>
         <div class="img-container">
-          <img src="${e.img.src}" alt="${e.img.alt}">
+          <img src="public/${e.img.src}" alt="${e.img.alt}">
+          <div class="product-info">
+            <h5>Recommendations</h5>
+            <h2>${e.name}</h2>
+            <div class="price">
+              <h3>$${e.price.now}</h4>
+              <h5>$${e.price.then}</h5>
+            </div>
+          </div>
         </div>
       </scroll-page>`
     }
@@ -43,7 +43,7 @@ function setArticleScroll(data){
       result+=/*html*/`
       <article id="${e.id}">
         <div class="img-container">
-            <img src="${e.img.src}" alt="${e.img.alt}">
+            <img src="public/${e.img.src}" alt="${e.img.alt}">
         </div>
         <div class="article-info">
             <h5>${e.name}</h5>
@@ -88,14 +88,14 @@ export let setMain=(data)=>{
       <div class="categories-list">
         <article>
           <div class="img-container">
-            <img src="img/i/icon-m.png" alt="">
+            <img src="public/img/i/icon-m.png" alt="">
           </div>
           <div class="name">Woman<h6>(728 items)</h6></div>
           <div class="icon">chevron_right</div>
         </article>
         <article>
           <div class="img-container">
-            <img src="img/i/icon-w.png" alt="">
+            <img src="public/img/i/icon-w.png" alt="">
           </div>
           <div class="name">Man<h6>(536 items)</h6></div>
           <div class="icon">chevron_right</div>
