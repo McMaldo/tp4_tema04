@@ -1,8 +1,12 @@
 import mainLayout from "./components/layout/main.js";
+import incomeLayout from "./components/layout/income.js";
 
 import * as article from "./components/view/article.js";
 import * as cart from "./components/view/cart.js";
 import * as home from "./components/view/home.js";
+import * as profile from "./components/view/profile.js";
+import * as signin from "./components/view/signin.js";
+import * as signup from "./components/view/signup.js";
 
 async function request() {
   const response = await fetch("public/data/articles.json");
@@ -15,6 +19,12 @@ let setBody = (view, data, id) => {
       return article.setMain(data, id);
     case"cart":
       return cart.setMain();
+    case"signin":
+      return signin.setMain();
+    case"signup":
+      return signup.setMain();
+    case'landing':
+      break;
     default:
       return home.setMain(data);
   }
@@ -47,8 +57,18 @@ let setEvents = (view, data, id) => {
         setView("cart");
       });
       break;
+    case'signin':
+      document.querySelector("main .login__register a").addEventListener("click", () =>  setView("signup"));
+      document.querySelector("main svg").addEventListener("click", () =>  setView("home"));
+      break;
+    case'signup':
+      document.querySelector("main .login__register a").addEventListener("click", () =>  setView("signin"));
+      document.querySelector("main svg").addEventListener("click", () =>  setView("home"));
+      break;
+    case'landing':
+      break;
     default:
-      document.querySelectorAll("scroll-page").forEach(e => {
+      document.querySelectorAll("scroll-page .img-container").forEach(e => {
         e.addEventListener("click", () => setView("article",e.id))
       })
       document.querySelectorAll("#heading nav a").forEach(e => {
@@ -63,9 +83,30 @@ let setEvents = (view, data, id) => {
       break;
   }
 }
+let setLayout = (view) => {
+  let root = document.querySelector("#root");
+  switch(view){
+    case'signin':
+    case'signup':
+    case'landing':
+      if(!root.classList.contains("income")){
+        root.innerHTML = incomeLayout();
+        root.className = "income";
+      }
+      break;
+    default:
+      if(!root.classList.contains("main")){
+        root.innerHTML = mainLayout();
+        root.querySelector("header .fa-user").addEventListener("click", () => setView("signin"));
+        root.querySelector("header svg").addEventListener("click", () => setView("home"));
+        root.className = "main";
+      }
+      window.scroll(0,60);
+      break;
+  }
+}
 let setView = async (view, id) => {
-  if(!document.querySelector("main"))document.querySelector("#root").innerHTML=mainLayout();
-  window.scroll(0,60);
+  setLayout(view);
   let data = await request();
   let main = document.querySelector("main");
   main.className = (view ? view : "");
@@ -73,7 +114,7 @@ let setView = async (view, id) => {
   setEvents(view, data, id);
 }
 
-setView();
+setView("home");
 
 /*document.addEventListener("click", e => {
   if(e.target.matches(".search")){

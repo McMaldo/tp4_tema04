@@ -10,8 +10,8 @@ function setHeaderScroll(data){
   let result="";
   data.forEach(e=>{
     if(e.id<3) {
-      result+=/*html*/`<scroll-page id="${e.id}">
-        <div class="img-container">
+      result+=/*html*/`<scroll-page>
+        <div id="${e.id}" class="img-container">
           <img src="public/${e.img.src}" alt="${e.img.alt}">
           <div class="product-info">
             <h5>Recommendations</h5>
